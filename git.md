@@ -150,6 +150,16 @@ log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
 git log --stat
 ```
 
+## create patch
+```
+git format-patch <parent branch>
+```
+
+## apply patch
+```
+git am < <patch file>
+```
+
 ## bundles
 ```
 git bundle create <repo>.bundle master

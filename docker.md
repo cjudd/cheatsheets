@@ -225,6 +225,11 @@ docker save <image>
 docker load  < <filename.tar>
 ```
 
+### time drift
+```
+docker-machine ssh default 'sudo ntpclient -s -h pool.ntp.org'
+```
+
 ## Examples
 ### Java Examples
 #### Java Shell (Java 9)
@@ -291,4 +296,10 @@ docker run -d -p 8000:8000 --name my-site microsoft/iis
 ### wordyninablog
 ```
 docker run --name wordyninjadb -e MYSQL_ROOT_PASSWORD=root+1 -e MYSQL_DATABASE=wordyninjadb -e MYSQL_USER=wordyninja -e MYSQL_PASSWORD=password+1 -p 3306:3306 -d mysql:latest
+```
+
+### mailtrap
+https://hub.docker.com/r/eaudeweb/mailtrap/
+```
+docker run -d --name=mailtrap -p 80:80 eaudeweb/mailtrap
 ```

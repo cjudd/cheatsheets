@@ -230,6 +230,14 @@ docker load  < <filename.tar>
 docker-machine ssh default 'sudo ntpclient -s -h pool.ntp.org'
 ```
 
+### networking
+```
+docker network ls
+docker network create <network name>
+docker run --network <network name> <image> <command>
+docker network connect <network name> <container name>
+```
+
 ## Examples
 ### Java Examples
 #### Java Shell (Java 9)

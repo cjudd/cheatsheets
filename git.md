@@ -9,6 +9,8 @@ By Christopher M. Judd (javajudd@gmail.com)
 * http://training.github.com/presentations/git-foundations.html#/
 * http://nvie.com/posts/a-successful-git-branching-model/
 * https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow
+* https://spin.atomicobject.com/2016/06/26/parallelize-development-git-worktrees/
+* https://dev.to/yankee/practical-guide-to-git-worktree-58o0
 
 ## stashing
 ```
@@ -225,6 +227,23 @@ git log -p <branch1> --not <branch2>
 ## show repositories
 ```
 ssh git@<server> info
+```
+## Git Worktrees
+## list trees
+```
+git worktree list
+```
+
+## add tree
+```
+git fetch
+git branch <branch> origin/<branch>
+git worktree add <tree dir> <branch>
+```
+
+### clean tree
+```
+git worktree remove <tree dir>
 ```
 
 ## GIT Flow

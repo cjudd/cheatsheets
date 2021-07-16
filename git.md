@@ -174,6 +174,7 @@ git remote rm <name>
 
 ## show origin url
 ```
+git remote -v
 git remote show origin
 git config --get remote.origin.url
 ```

@@ -18,12 +18,21 @@ java -jar target/<jarname>.war
 ```
 
 ## Multiple Main Classes
+
+Maven
 ```
 <properties>
-    <start-class>com.manifestcorp.demo.mq.mqdemo.MqDemoApplication</start-class>
+    <start-class>${main class}</start-class>
 </properties>
-
 ```
+Gradle
+```
+springBoot {
+	mainClass = '<main class>'
+}
+```
+
+Run
 ```
 java -cp target/<jar> -Dloader.main=<main class> org.springframework.boot.loader.PropertiesLauncher
 

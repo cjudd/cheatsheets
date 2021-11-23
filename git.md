@@ -47,9 +47,14 @@ git branch -r
 git branch <branch>
 ```
 
-## delete/remove branch
+## delete/remove local branch
 ```
 git branch -D feature/test
+```
+
+## delete/remove remote branch
+```
+git push origin --delete develop
 ```
 
 ## rename branch

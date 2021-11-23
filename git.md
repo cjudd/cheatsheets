@@ -280,3 +280,15 @@ git flow hotfix finish <release>
 git flow support
 git flow support start <release> <base>
 ```
+
+# copy or move full git repository
+```
+git clone --mirror <repo url> temp-dir
+cd temp-dir
+git tag
+git branch -a
+git remote rm origin
+git remote add origin <new repo url>
+git push origin --all
+git push --tags
+```

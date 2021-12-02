@@ -25,6 +25,7 @@ git stash drop <stash name>
 
 ## checkout remote branch
 ```
+git switch <branch>
 git checkout -t origin/<feature>/<feature num>
 git checkout -t origin/feature/<feature num>
 ```

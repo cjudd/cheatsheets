@@ -1,12 +1,24 @@
 # SSH Cheatsheet
 
-## ssh to serve using key key
+* SSH Trouble shooting - https://gitolite.com/gitolite/sts
+
+## SSH single sign-on
+```
+ssh-add ~/.ssh/id_rsa
+```
+
+## SSH to server using key
 ```
 ssh -i ~/.ssh/<keyname> <user>@<server>
 ```
 ## secure copy 
+To server:
 ```
 scp -i ~/.ssh/<keyname> <file> <user>@<server>:<path>
+```
+From server:
+```
+scp -i ~/.ssh/<keyname> <user>@<server>:<path> <file>
 ```
 
 ## finger print AWS key

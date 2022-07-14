@@ -1,5 +1,6 @@
 # SSH Cheatsheet
 
+## Resources
 * SSH Trouble shooting - https://gitolite.com/gitolite/sts
 
 ## SSH single sign-on

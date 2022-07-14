@@ -8,64 +8,6 @@
 * https://jpetazzo.github.io/2013/10/16/configure-docker-bridge-network/
 * http://www.slideshare.net/tarkasteve/developerweek-2015-docker-tutorial
 
-## Docker Machine
-
-### create
-#### create local docker machine
-```
-docker-machine create -d virtualbox <machine_name>
-```
-#### create AWS docker machine
-```
-docker-machine -D create \
-    --driver amazonec2 \
-    --amazonec2-access-key <aws-access-key> \
-    --amazonec2-secret-key <aws-secret-key> \
-    --amazonec2-region <aws-region> \
-    --amazonec2-vpc-id <aws-vpc> \
-    --amazonec2-zone <aws-zone> \
-    <machine-name>
-```
-#### create DigitalOcean docker machine
-```
-docker-machine create --driver digitalocean --digitalocean-access-token <digitalocean-token> <machine-name>
-```
-
-### remove docker machine
-```
-docker-machine rm <machine-name>
-```
-
-### list docker machines
-```
-docker-machine ls
-```
-
-### switch machines
-```
-docker-machine env <machine-name>
-eval "$(docker-machine env <machine-name>)"
-```
-
-### port forwarding
-#### enabled port forwarding
-```
-VBoxManage controlvm "<docker-machine name>" natpf1 "<descriptive name of port>,tcp,,<host port>,,<guest port>"
-```
-example
-```
-VBoxManage controlvm "iq" natpf1 "iq-tcp-port,tcp,,9090,,9090"
-```
-
-#### disable port forwarding
-```
-VBoxManage controlvm "<docker-machine name>" natpf1 delete "<descriptive name of port>"
-```
-example
-```
-VBoxManage controlvm "iq" natpf1 delete "iq-tcp-port"
-```
-
 ## Docker
 
 ### docker's ip
@@ -310,4 +252,62 @@ docker run --name wordyninjadb -e MYSQL_ROOT_PASSWORD=root+1 -e MYSQL_DATABASE=w
 https://hub.docker.com/r/eaudeweb/mailtrap/
 ```
 docker run -d --name=mailtrap -p 80:80 eaudeweb/mailtrap
+```
+
+## Docker Machine
+
+### create
+#### create local docker machine
+```
+docker-machine create -d virtualbox <machine_name>
+```
+#### create AWS docker machine
+```
+docker-machine -D create \
+    --driver amazonec2 \
+    --amazonec2-access-key <aws-access-key> \
+    --amazonec2-secret-key <aws-secret-key> \
+    --amazonec2-region <aws-region> \
+    --amazonec2-vpc-id <aws-vpc> \
+    --amazonec2-zone <aws-zone> \
+    <machine-name>
+```
+#### create DigitalOcean docker machine
+```
+docker-machine create --driver digitalocean --digitalocean-access-token <digitalocean-token> <machine-name>
+```
+
+### remove docker machine
+```
+docker-machine rm <machine-name>
+```
+
+### list docker machines
+```
+docker-machine ls
+```
+
+### switch machines
+```
+docker-machine env <machine-name>
+eval "$(docker-machine env <machine-name>)"
+```
+
+### port forwarding
+#### enabled port forwarding
+```
+VBoxManage controlvm "<docker-machine name>" natpf1 "<descriptive name of port>,tcp,,<host port>,,<guest port>"
+```
+example
+```
+VBoxManage controlvm "iq" natpf1 "iq-tcp-port,tcp,,9090,,9090"
+```
+
+#### disable port forwarding
+```
+VBoxManage controlvm "<docker-machine name>" natpf1 delete "<descriptive name of port>"
+```
+example
+```
+VBoxManage controlvm "iq" natpf1 delete "iq-tcp-port"
 ```

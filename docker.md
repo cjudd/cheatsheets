@@ -54,6 +54,11 @@ example:
 docker run -it ubuntu /bin/echo 'Hello World'
 ```
 
+#### run and remove container
+```
+docker run --rm -it <image>
+```
+
 #### run container as deamon
 ```
 docker run -d <image>
@@ -61,6 +66,9 @@ docker run -d <image>
 example:
 ```
 docker run -d ubuntu:14.04 /bin/sh -c "while true; do echo hello world; sleep 1; done"
+```
+```
+docker run -d -p 80:80 nginx
 ```
 
 ### run container and port mapping
@@ -86,6 +94,21 @@ docker run -it -v ~/devl/tmp/:/data kalilinux/kali-linux-docker bash
 docker stop <container>
 ```
 
+### remove container   
+```
+docker rm <container>
+```
+
+### remove all stopped containers
+```
+docker rm $(docker ps -a -q)
+```
+
+### stop and remove container
+```
+docker rm -f <container>
+```
+
 ### connect to existing container
 #### connect to existing container with command-line access
 ```
@@ -95,6 +118,11 @@ docker exec -it <container> bash
 #### connect to existing container with root access
 ```
 docker exec -it --user root <container> bash
+```
+
+#### run commandd in container
+```
+docker exec -it <container> <command>
 ```
 
 ### access logs
@@ -132,9 +160,19 @@ docker inspect <container>
 docker images
 ```
 
-### view conatiner layers
+### remove local images
 ```
-docker history <container>
+docker rmi <image>
+```
+
+### remove all dangling images
+```
+docker rmi $(docker images -q -f dangling=true)
+```
+
+### view image layers
+```
+docker history image
 ```
 
 ### list process running in container
@@ -145,6 +183,11 @@ docker top <container>
 ### build a Dockerfile
 ```
 docker build -t <image name> .
+```
+
+### Samve running container as image
+```
+docker commit -m "<message>" -a "<author>" <container> <username>/<repository>:<tag>
 ```
 
 ### backup container
@@ -210,7 +253,7 @@ docker run --name mysql -e MYSQL_ROOT_PASSWORD=root+1 -p 3306:3306 -d mysql:5.5.
 ### Ultimate Enterprise Java Build System
 #### Jenkins - https://hub.docker.com/_/jenkins/
 ```
-docker run -d -p 8080:8080 -p 50000:50000 --name jenkins -v /var/jenkins_home jenkins
+docker run -d -p 8080:8080 -p 50000:50000 --name jenkins -v /var/jenkins_home jenkins/jenkins:lts
 ```
 #### Nexus - https://hub.docker.com/r/sonatype/nexus/
 ```

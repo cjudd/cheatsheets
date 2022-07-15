@@ -12,15 +12,69 @@ By Christopher M. Judd (javajudd@gmail.com)
 * https://spin.atomicobject.com/2016/06/26/parallelize-development-git-worktrees/
 * https://dev.to/yankee/practical-guide-to-git-worktree-58o0
 
-## stashing
+## create respository
+
+### create new local repo
 ```
-git stash
-git stash save "<name>"
-git stash list
-git stash pop
-git stash apply <stash name>
-git stash apply stash@{2}
-git stash drop <stash name>
+git init <project>
+```
+
+### clone existing repository
+```
+git clone <repo url>
+```
+
+## observer repo
+### list new or modified files not committed
+```
+git status
+```
+
+### show changes to file not staged
+```
+git diff
+```
+
+### show changes to staged files
+```
+git diff --cached
+```
+
+### show all staged and unstaged file changes
+```
+git diff HEAD
+```
+
+### show changes between two commit ids
+```
+git diff <commit id 1> <commit id 2>
+```
+
+### list the change dates and authors for file
+```
+git blame <file>
+```
+
+### show file changes for commit id and/or file
+```
+git show <commit id>:<file>
+```
+
+## branches
+### list all local branches
+```
+git branch
+```
+
+### list local and remote branches
+```
+git branch -av
+```
+
+### switch branch
+```
+git switch <branch>
+git checkout <branch>
 ```
 
 ## checkout remote branch
@@ -89,6 +143,22 @@ git push origin :refs/tags/<tag>
 git checkout -b <new branch name> <tag>
 ```
 
+## synchronize
+### get latest changes from origin
+```
+git fetch
+```
+
+### fetch latest changes from origin and merge
+```
+git pull
+```
+
+### fetch latest changes from origin and rebase
+```
+git pull --rebase
+```
+
 ## merge
 ```
 git merge <branch>
@@ -151,11 +221,26 @@ git reflog -10
 git log --oneline -10
 git log --pretty=oneline
 log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+git log -p <file/directory>
 ```
 
 ## log with file names
 ```
 git log --stat
+```
+
+## stash 
+### stashing
+```
+git stash
+```
+```
+git stash save "<name>"
+git stash list
+git stash pop
+git stash apply <stash name>
+git stash apply stash@{2}
+git stash drop <stash name>
 ```
 
 ## create patch

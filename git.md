@@ -372,7 +372,8 @@ git flow support
 git flow support start <release> <base>
 ```
 
-# copy or move full git repository
+## Copy/Move Repository
+### copy or move full git repository
 ```
 git clone --mirror <repo url> temp-dir
 cd temp-dir

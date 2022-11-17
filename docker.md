@@ -215,12 +215,36 @@ docker load  < <filename.tar>
 docker-machine ssh default 'sudo ntpclient -s -h pool.ntp.org'
 ```
 
-### networking
+## Networking
+### List networks
 ```
 docker network ls
+```
+### Create network
+```
 docker network create <network name>
-docker run --network <network name> <image> <command>
+```
+### Connect to existing network
+```
 docker network connect <network name> <container name>
+```
+### Run container in a network
+```
+docker run --network <network name> <image> <command>
+```
+
+## Volumes
+### List volumes
+```
+docker volume ls
+```
+### Find dangling Volumes
+```
+docker volume ls -qf dangling=true
+```
+### Remove volumes
+```
+docker volume rm <volume id>
 ```
 
 ## Examples

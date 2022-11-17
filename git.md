@@ -6,48 +6,387 @@ By Christopher M. Judd (javajudd@gmail.com)
 * http://java.dzone.com/articles/some-notes-git
 * http://gitolite.com/gitolite/sts.html
 * http://gitimmersion.com/
+* https://tapajyoti-bose.medium.com/git-cheat-sheet-with-40-commands-concepts-ab1b9d973e96
 * http://training.github.com/presentations/git-foundations.html#/
 * http://nvie.com/posts/a-successful-git-branching-model/
 * https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow
 * https://spin.atomicobject.com/2016/06/26/parallelize-development-git-worktrees/
 * https://dev.to/yankee/practical-guide-to-git-worktree-58o0
 
-## create respository
+## Create Respository
 
-### create new local repo
+### Initialize local repository
 ```
-git init <project>
+git init <directory>
 ```
 
-### clone existing repository
+### Clone existing remote repository
 ```
 git clone <repo url>
 ```
 
-## observer repo
-### list new or modified files not committed
+## Add Files
+
+### Add file to staging area
+```
+git add <file>
+```
+
+### Add all files to staging area
+```
+git add .
+```
+
+## Status
+
+### List new or modified files not committed
 ```
 git status
 ```
 
-### show changes to file not staged
+## Commit
+
+### Commit changes to staged files
+```
+git commit -m "<message>"
+```
+
+### Add and commit changes
+```
+git commit -a -m "<message>"
+git commit -am "<message>"
+```
+
+### Checkout a previous commit
+```
+git commit <commit id>
+```
+
+### Revert a commit
+```
+git revert <commit id>
+```
+
+### Reset a commit
+```
+git reset <commit id>
+git reset --hard <commit id>
+git reset --hard origin/master
+```
+
+## Restore
+
+### Restore/discard changes in working directory
+```
+git restore <file>
+```
+
+### Restore/unstage changes in staging area
+```
+git restore --staged <file>
+```
+
+## Files
+
+### Move or Rename file
+```
+git mv <current path> <new path>
+```
+
+### Remove a file from repo
+```
+git rm <file>
+```
+
+### Remove file from staging
+```
+git rm --cached <file>
+```
+
+## Branches
+
+### List local branches
+```
+git branch
+```
+
+### List remote branches
+```
+git branch -r
+```
+
+### List local and remote branches
+```
+git branch -a
+```
+
+### List branches with last commit
+```
+git branch -v
+```
+
+### Create branch
+```
+git branch <branch>
+```
+
+### Create and switch branch
+```
+git checkout -b <branch>
+```
+
+### Switch branch
+```
+git switch <branch>
+git checkout <branch>
+```
+
+### Delete/remove local branch
+```
+git branch -D <branch>
+```
+
+### Delete/remove remote branch
+```
+git push origin --delete <branch>
+```
+
+## Merge
+
+### Merge branch
+```
+git merge <branch to merge into head>
+```
+
+### Merge No fast-forward
+Creates a merge commit even if the merge resolves as a fast-forward.
+```
+git merge --no-ff <branch to merge into head>
+```
+
+### Merge squash
+Squashes all commits from branch into a single commit.
+```
+git merge --squash <branch to merge into head>
+```
+
+## Rebase
+
+### Rebase banch
+```
+git rebase <branch to rebase from>
+```
+
+## History
+
+### Default commit history
+```
+git log
+```
+
+## Commit history with file names
+```
+git log --stat
+```
+
+### Commit history with diff
+```
+git log -p
+```
+
+### Hash (short) and comment limited
+```
+git log --oneline -10
+```
+
+### Hash (short) and comment limited to a # of commits
+```
+git log --oneline -10
+```
+
+### Hash (full) and comment
+```
+git log --pretty=oneline
+```
+
+### Hash (short), HEAD index and comment
+```
+git reflog -10
+```
+
+### Hash (short), date, comment, author
+```
+git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+```
+
+## Diff
+
+### Show changes to unstaged files
 ```
 git diff
 ```
 
-### show changes to staged files
+### Show changes to staged files
 ```
-git diff --cached
-```
-
-### show all staged and unstaged file changes
-```
-git diff HEAD
+git diff --staged
 ```
 
-### show changes between two commit ids
+### Show changes between two commits
 ```
 git diff <commit id 1> <commit id 2>
+```
+
+## Stash 
+
+### Stashing
+```
+git stash
+```
+
+### Stashing with message
+```
+git stash save "<message>"
+```
+
+### List stash
+```
+git stash list
+```
+
+### Apply stash
+```
+git stash apply <id>
+git stash apply stash@{<index>}
+```
+
+### Apply and remove (pop) stash
+```
+git stash pop
+git stash pop <stash id>
+```
+
+### Display stash changes
+```
+git stash show <stash id>
+```
+
+### Remove stash
+```
+git stash drop <stash id>
+```
+
+### Remove all stashes
+```
+git stash clear
+```
+
+## Remote Repositories
+
+### Add remote repository
+```
+git remote add <remote alias> <url>
+git remote add origin <url>
+```
+
+### List remote repositories
+```
+git remote
+git remote -v
+git remote show <alias>
+git config --get remote.origin.url
+```
+
+## Remove remote repository
+```
+git remote rm <remote alias>
+```
+
+## Rename remote repository
+```
+git remote rename <old alias> <new alias>
+```
+
+## Synchronize
+
+### Fetch latest changes from origin
+```
+git fetch
+```
+
+### Fetch latest changes from remote repository
+```
+git fetch <remote alias>
+```
+
+### Fetch latest changes from remote repository's particular branch
+```
+git fetch <remote alias> <branch>
+```
+
+### Pull latest changes from origin
+```
+git pull
+```
+
+### Pull latest changes from remote repository and particular branch
+```
+git pull <remote alias> <branch>
+```
+
+### Pull latest changes from origin and rebase
+```
+git pull --rebase
+```
+
+## Push changes to remote repository
+```
+git push
+git push <remote alias>
+git push <remote alias> <branch>
+```
+
+## Tags
+
+### List tags
+```
+git tag
+```
+
+### Create tags
+```
+git tag -a <tag name> -m '<label>'
+```
+
+### Push tags
+```
+git push --tags
+```
+
+### Delete tags
+```
+git tag -d <tag>
+git push origin :refs/tags/<tag>
+```
+
+## Create branch from tag
+```
+git checkout -b <new branch name> <tag>
+```
+
+
+## Other
+
+### checkout remote branch
+```
+git switch <branch>
+git checkout -t origin/<feature>/<feature num>
+git checkout -t origin/feature/<feature num>
+```
+
+
+### rename branch
+```
+git branch -m <oldname> <newname>
 ```
 
 ### list the change dates and authors for file
@@ -60,127 +399,7 @@ git blame <file>
 git show <commit id>:<file>
 ```
 
-## branches
-### list all local branches
-```
-git branch
-```
 
-### list local and remote branches
-```
-git branch -av
-```
-
-### switch branch
-```
-git switch <branch>
-git checkout <branch>
-```
-
-## checkout remote branch
-```
-git switch <branch>
-git checkout -t origin/<feature>/<feature num>
-git checkout -t origin/feature/<feature num>
-```
-
-## push remote branch
-```
-git push origin feature/<feature num>
-git push -u origin feature/<feature num>
-```
-
-## list branches
-```
-git branch
-git branch -v
-git branch -r
-```
-
-## create branch
-```
-git branch <branch>
-```
-
-## delete/remove local branch
-```
-git branch -D feature/test
-```
-
-## delete/remove remote branch
-```
-git push origin --delete develop
-```
-
-## rename branch
-```
-git branch -m <oldname> <newname>
-```
-
-## list tags
-```
-git tag
-```
-
-## create tags
-```
-git tag -a <tag name> -m '<label>'
-```
-
-## push tags
-```
-git push --tags
-```
-
-## delete tags
-```
-git tag -d <tag>
-git push origin :refs/tags/<tag>
-```
-
-## create branch from tag
-```
-git checkout -b <new branch name> <tag>
-```
-
-## synchronize
-### get latest changes from origin
-```
-git fetch
-```
-
-### fetch latest changes from origin and merge
-```
-git pull
-```
-
-### fetch latest changes from origin and rebase
-```
-git pull --rebase
-```
-
-## merge
-```
-git merge <branch>
-git merge --no-ff <branch>
-```
-
-## diff workspace
-```
-git diff
-git diff <file>
-```
-
-## diff staged
-```
-git diff --cached
-git diff --staged
-```
-
-## reset
-```
-git reset --hard origin/master
-```
 
 ## undo last commit
 ```
@@ -204,43 +423,10 @@ git update-index --assume-unchanged path/to/file
 git update-index --no-assume-unchanged path/to/file
 ```
 
-## rebase
-```
-git rebase <branch>
-```
-
 ## diff branches
 ```
 git diff --staged
 git diff --name-status master..<branch>
-```
-
-## log 
-```
-git reflog -10
-git log --oneline -10
-git log --pretty=oneline
-log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
-git log -p <file/directory>
-```
-
-## log with file names
-```
-git log --stat
-```
-
-## stash 
-### stashing
-```
-git stash
-```
-```
-git stash save "<name>"
-git stash list
-git stash pop
-git stash apply <stash name>
-git stash apply stash@{2}
-git stash drop <stash name>
 ```
 
 ## create patch
@@ -257,24 +443,6 @@ git am < <patch file>
 ```
 git bundle create <repo>.bundle master
 git clone <repo>.bundle -b master <bundle>
-```
-
-## set origin url
-```
-git remote add origin http://<server>/<repo>.git
-git remote rm <name>
-```
-
-## show origin url
-```
-git remote -v
-git remote show origin
-git config --get remote.origin.url
-```
-
-## remove origin
-```
-git remote rm origin
 ```
 
 ## show config

@@ -382,6 +382,8 @@ git remote rm origin
 git remote add origin <new repo url>
 git push origin --all
 git push --tags
+```
+
 ## Backup
 
 ### Backup up full repository

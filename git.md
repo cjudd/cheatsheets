@@ -382,4 +382,11 @@ git remote rm origin
 git remote add origin <new repo url>
 git push origin --all
 git push --tags
+## Backup
+
+### Backup up full repository
+https://stackoverflow.com/questions/11792671/how-to-git-bundle-a-complete-repo
+```
+git clone --mirror git@example.org:path/repo.git
+git bundle create repo.bundle --all
 ```

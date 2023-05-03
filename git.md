@@ -457,6 +457,11 @@ git config --global user.email "[email address]"
 git config --global color.ui auto
 ```
 
+## set default branch to main
+```
+git config --global init.defaultBranch main
+```
+
 ## revert to a specific commit
 ```
 git reset ea5a181

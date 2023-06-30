@@ -247,6 +247,21 @@ docker volume ls -qf dangling=true
 docker volume rm <volume id>
 ```
 
+## Docker Compose
+### Start Containers
+```
+docker-compose up
+docker-compose -d up
+```
+### Stop Containers
+```
+docker-compose down
+```
+### White All
+```
+docker-compose down --rmi all
+```
+
 ## Examples
 ### Java Examples
 #### Java Shell (Java 9)

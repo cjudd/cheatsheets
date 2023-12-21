@@ -132,6 +132,16 @@ git branch <branch>
 
 ### Create and switch branch
 ```
+git switch -c <branch>
+```
+
+### Create empty/orphaned branch
+```
+git switch --orphan <new branch>
+```
+
+### Create and switch branch
+```
 git checkout -b <branch>
 ```
 
